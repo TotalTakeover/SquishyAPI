@@ -73,6 +73,14 @@ function squassets.getHeadRot()
   return (vanilla_model.HEAD:getOriginRot() + 180) % 360 - 180
 end
 
+--gets a modelparts relative matrix in a model
+--Courtesy of @kitcat962
+function squassets.getMatrixRecursive(part)
+  if not part then return matrices.mat4() end
+  return squassets.getMatrixRecursive(part:getParent()) * part:getPositionMatrix()
+end
+
+
 --Math Functions
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
@@ -259,78 +267,6 @@ end
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
-
-squassets.vanillaElement = {}
-squassets.vanillaElement.__index = squassets.vanillaElement
-function squassets.vanillaElement:new(element, strength, keepPosition)
-  local self = setmetatable({}, squassets.vanillaElement)
-
-  -- INIT -------------------------------------------------------------------------
-    self.keepPosition = keepPosition 
-	if keepPosition == nil then self.keepPosition = true end
-	self.element = element
-	self.element:setParentType("NONE")
-    self.strength = strength or 1
-	self.rot = vec(0,0,0)
-	self.pos = vec(0,0,0)
-
-    -- CONTROL -------------------------------------------------------------------------
-
-	self.enabled = true
-  function self:disable()
-    self.enabled = false
-  end
-  function self:enable()
-    self.enabled = true
-  end
-	function self:toggle()
-		self.enabled = not self.enabled
-	end
-
-	self.frozen = false
-	function self:freeze()
-		self.frozen = true
-	end
-	function self:unfreeze()
-		self.frozen = false
-	end
-
-  --returns it to normal attributes
-  function self:zero()
-    self.element:setOffsetRot(0, 0, 0)
-		self.element:setPos(0, 0, 0)
-  end
-	
-  --get the current rot/pos
-	function self:getPos()
-		return self.pos
-	end
-	function self:getRot()
-		return self.rot
-	end
-
-  -- UPDATES -------------------------------------------------------------------------
-
-  function self:render(dt, _)
-    if not self.frozen then
-			if self.enabled then
-				local rot, pos = self:getVanilla()
-				self.element:setOffsetRot(rot*self.strength)
-				if self.keepPosition then
-					self.element:setPos(pos)
-				end
-			else
-				self.element:setOffsetRot(math.lerp(
-					self.element:getOffsetRot(), 0, dt	
-				))
-				self.rot = math.lerp(self.rot, 0, dt)
-				self.pos = math.lerp(self.pos, 0, dt)
-			end
-    end
-  end
-
-  return self
-end
 
 squassets.BERP3D = {}
 squassets.BERP3D.__index = squassets.BERP3D
