@@ -82,7 +82,7 @@ local render = {}
 
 for moduleName in pairs(moduleNames) do
 
-  local script = modulesPath .. "."  .. moduleName
+  local script = modulesPath .. "." .. moduleName
 
   if pcall(require, script) then
 
