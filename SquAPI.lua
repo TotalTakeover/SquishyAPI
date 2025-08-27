@@ -10,7 +10,7 @@
 -- Author: Squishy
 -- Discord tag: @mrsirsquishy
 
--- Version: 1.2.0
+-- Version: 1.2.1
 -- Legal: ARR
 
 -- Special Thanks to
@@ -61,26 +61,26 @@ squapi.autoFunctionUpdates = true
 -- Require modules (could not have been made without FOX's foundation)
 local modulesPath = "./SquAPI_modules"
 local moduleNames = {
-    "arm",
-    "animateTexture",
-    "bewb",
-    "bounceWalk",
-    "crouch",
-    "ear",
-    "eye",
-    "FPHand",
-    "hoverPoint",
-    "leg",
-    "randimation",
-    "smoothHead",
-    "tail",
-    "taur",
-    "squishy",
+  arm = true,
+  animateTexture = true,
+  bewb = true,
+  bounceWalk = true,
+  crouch = true,
+  ear = true,
+  eye = true,
+  FPHand = true,
+  hoverPoint = true,
+  leg = true,
+  randimation = true,
+  smoothHead = true,
+  tail = true,
+  taur = true,
+  squishy = true,
 }
 local tick = {}
 local render = {}
 
-for _, moduleName in pairs(moduleNames) do
+for moduleName in pairs(moduleNames) do
 
   local script = modulesPath .. "."  .. moduleName
 
@@ -122,4 +122,29 @@ if squapi.autoFunctionUpdates then
   end
 end
 
-return squapi
+-- NULL MODULE --------------------------------------------------------------------------------------------
+
+-- Returns like normal, but shows a custom message if a module is accessed without that module being installed
+-- The message avoids erroring
+
+return setmetatable(squapi, {
+  __index = function(_, k)
+    if moduleNames[k] then
+      local url = "https://github.com/MrSirSquishy/SquishyAPI/blob/main/SquAPI_modules/" .. k .. ".lua\n\n"
+      printJson(toJson { {
+        text = url,
+        color = "blue",
+        underlined = true,
+        clickEvent = {
+          action = "open_url",
+          value = url,
+        },
+      } })
+      error(
+      '§4Tried to access a module that wasn\'t installed! Modules must be installed in a "SquAPI_modules" folder next to SquAPI.lua!§c ',
+        2)
+    else
+      return nil
+    end
+  end,
+})
