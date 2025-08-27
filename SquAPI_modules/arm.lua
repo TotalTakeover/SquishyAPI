@@ -1,11 +1,8 @@
 ---@meta _
 local vanillaElement
 local assetPath = "./VanillaElement"
-if pcall(require, assetPath) then
-  vanillaElement = require(assetPath)
-else
-  error("§4The arm module requires VanillaElement, which was not found!§c")
-end
+if pcall(require, assetPath) then vanillaElement = require(assetPath) end
+assert(vanillaElement, "§4The arm module requires VanillaElement, which was not found!§c")
 
 
 ---@class Arm

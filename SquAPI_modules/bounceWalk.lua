@@ -1,11 +1,8 @@
 ---@meta _
 -- local squassets
 -- local assetPath = "./SquAssets"
--- if pcall(require, assetPath) then
---   squassets = require(assetPath)
--- else
---   error("§4The bounceWalk module requires SquAssets, which was not found!§c")
--- end
+-- if pcall(require, assetPath) then squassets = require(assetPath) end
+-- assert(squassets, "§4The bounceWalk module requires SquAssets, which was not found!§c")
 
 
 ---@class bounceWalk
