@@ -59,7 +59,7 @@ squapi.autoFunctionUpdates = true
 
 
 -- Require modules (could not have been made without FOX's foundation)
-local modulesPath = ... .. ".SquAPI_modules"
+local modulesPath = "./SquAPI_modules"
 local moduleNames = {
     "arm",
     "animateTexture",
@@ -82,7 +82,7 @@ local render = {}
 
 for _, moduleName in pairs(moduleNames) do
 
-  local script = modulesPath .. moduleName
+  local script = modulesPath .. "."  .. moduleName
 
   if pcall(require, script) then
 
