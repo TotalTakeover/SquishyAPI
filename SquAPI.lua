@@ -122,10 +122,8 @@ if squapi.autoFunctionUpdates then
   end
 end
 
--- NULL MODULE --------------------------------------------------------------------------------------------
 
--- Returns like normal, but shows a custom message if a module is accessed without that module being installed
--- The message avoids erroring
+-- RETURN -----------------------------------------------------------------------------------------------------------
 
 return setmetatable(squapi, {
   __index = function(_, k)
