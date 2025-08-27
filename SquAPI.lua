@@ -59,7 +59,6 @@ squapi.autoFunctionUpdates = true
 
 
 -- Require modules (could not have been made without FOX's foundation)
-local concat, s = "%s.%s", "s"
 local modulesPath = ... .. ".SquAPI_modules"
 local moduleNames = {
     "arm",
@@ -83,7 +82,7 @@ local render = {}
 
 for _, moduleName in pairs(moduleNames) do
 
-  local script = concat:format(modulesPath, moduleName)
+  local script = modulesPath .. moduleName
 
   if pcall(require, script) then
 
