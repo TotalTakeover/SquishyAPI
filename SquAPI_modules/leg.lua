@@ -2,9 +2,9 @@
 local vanillaElement
 local assetPath = "./VanillaElement"
 if pcall(require, assetPath) then
-	vanillaElement = require(assetPath)
+  vanillaElement = require(assetPath)
 else
-	error("§4The leg module requires VanillaElement, which was not found!§c", 2)
+  error("§4The leg module requires VanillaElement, which was not found!§c")
 end
 
 

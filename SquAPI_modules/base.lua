@@ -1,11 +1,11 @@
 ---@meta _
-local squassets
-local assetPath = "./SquAssets"
-if pcall(require, assetPath) then
-	squassets = require(assetPath)
-else
-	error("§4The base module requires SquAssets, which was not found!§c", 2)
-end
+-- local squassets
+-- local assetPath = "./SquAssets"
+-- if pcall(require, assetPath) then
+--   squassets = require(assetPath)
+-- else
+--   error("§4The base module requires SquAssets, which was not found!§c")
+-- end
 
 ---@class base
 local base = {}

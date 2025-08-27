@@ -6,9 +6,9 @@
 local squassets
 local assetPath = "./SquAssets"
 if pcall(require, assetPath) then
-	squassets = require(assetPath)
+  squassets = require(assetPath)
 else
-	error("§4The smoothHead module requires SquAssets, which was not found!§c", 2)
+  error("§4The smoothHead module requires SquAssets, which was not found!§c")
 end
 
 ---@class smoothHead
