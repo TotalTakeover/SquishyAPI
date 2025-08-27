@@ -1,6 +1,6 @@
 ---@meta _
 local vanillaElement
-local assetPath = (...):gsub(".SquAPI_modules", "") .. ".VanillaElement"
+local assetPath = "./VanillaElement"
 if pcall(require, assetPath) then vanillaElement = require(assetPath) end
 assert(vanillaElement, "§4The arm module requires VanillaElement, which was not found!§c")
 

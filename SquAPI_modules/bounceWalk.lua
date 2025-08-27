@@ -1,8 +1,8 @@
 ---@meta _
-local squassets
-local assetPath = (...):gsub(".SquAPI_modules", "") .. ".SquAssets"
-if pcall(require, assetPath) then squassets = require(assetPath) end
-assert(squassets, "§4The bounceWalk module requires SquAssets, which was not found!§c")
+-- local squassets
+-- local assetPath = "./SquAssets"
+-- if pcall(require, assetPath) then squassets = require(assetPath) end
+-- assert(squassets, "§4The bounceWalk module requires SquAssets, which was not found!§c")
 
 
 ---@class bounceWalk

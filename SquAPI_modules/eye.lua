@@ -1,6 +1,6 @@
 ---@meta _
 local squassets
-local assetPath = (...):gsub(".SquAPI_modules", "") .. ".SquAssets"
+local assetPath = "./SquAssets"
 if pcall(require, assetPath) then squassets = require(assetPath) end
 assert(squassets, "§4The eye module requires SquAssets, which was not found!§c")
 
