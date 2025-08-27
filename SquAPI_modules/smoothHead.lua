@@ -4,9 +4,12 @@
 
 ---@meta _
 local squassets
-local assetPath = (...):gsub(".SquAPI_modules", "") .. ".SquAssets"
-if pcall(require, assetPath) then squassets = require(assetPath) end
-assert(squassets, "§4The smoothHead module requires SquAssets, which was not found!§c")
+local assetPath = "./SquAssets"
+if pcall(require, assetPath) then
+	squassets = require(assetPath)
+else
+	error("§4The smoothHead module requires SquAssets, which was not found!§c", 2)
+end
 
 ---@class smoothHead
 local smoothHead = {}
